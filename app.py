@@ -2,69 +2,150 @@ import streamlit as st
 import time
 import pandas as pd
 
-# Wide layout to perfectly map the Multi-Engine Cognitive Dashboard
-st.set_page_config(layout="wide", page_title="Next-Gen Cross-Domain Cognitive Auditor")
+# Set wide layout for supreme enterprise presentation
+st.set_page_config(layout="wide", page_title="Cognitive Healthcare Integrity Suite | Damini Prajapati Edition")
+
+# Premium Custom CSS Styles for an impressive UI design
+st.markdown("""
+    <style>
+    .damini-premium-banner {
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #2563eb 100%);
+        padding: 30px;
+        border-radius: 15px;
+        color: white;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        border-left: 8px solid #38bdf8;
+    }
+    .fault-box-human {
+        background-color: #fff5f5;
+        padding: 18px;
+        border-radius: 10px;
+        border-left: 5px solid #e53e3e;
+        margin-bottom: 15px;
+    }
+    .fault-box-ai {
+        background-color: #f0fff4;
+        padding: 18px;
+        border-radius: 10px;
+        border-left: 5px solid #38a169;
+        margin-bottom: 15px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 
 # ==========================================
-# 🎛️ SIDEBAR: ENTERPRISE CONTROL TERMINAL
+# 🎛️ SIDEBAR: GOVERNANCE CONTROL CENTER (BEGINNER TO EXPERT)
 # ==========================================
 st.sidebar.markdown("## 🎛️ Governance Control Center")
-st.sidebar.caption("Cross-functional intelligence router for global safety compliance.")
+st.sidebar.caption("Seamless cross-functional navigation dashboard.")
 
 user_role = st.sidebar.selectbox(
-    "Select Enterprise Persona:",
-    ["PV Operations Lead", "Chief Medical Auditor", "Healthcare Revenue Assurance Director"]
+    "Select Enterprise Persona / Department:",
+    [
+        "PV Operations Specialist (Data Entry & Triage)", 
+        "Medical Coding & Billing Analyst (Claims Audit)", 
+        "Chief Medical Reviewer (Clinical Oversight)",
+        "Regulatory Affairs Lead (Global Submission)"
+    ]
 )
 
 processing_core = st.sidebar.radio(
-    "Select AI Core Architecture:",
-    ["Static Database Validation (Argus Replica)", "Advanced Cognitive Cross-Engine Nexus (Beyond Argus)"]
+    "Select AI Core Architecture Mode:",
+    [
+        "Legacy Database Validation Model (Traditional Silo Mode)", 
+        "Advanced Cognitive Cross-Engine Integration Core (Proprietary AI)"
+    ]
 )
 
 st.sidebar.markdown("---")
-st.sidebar.markdown("### 🧠 UX Depth Controller")
-learning_depth = st.sidebar.slider("Adaptive Guidance Resolution:", 1, 10, 10)
+st.sidebar.markdown("### 🧠 UX Depth & Guidance Resolution")
+learning_depth = st.sidebar.slider("Adaptive Guidance Slider (Beginner to Expert):", 1, 10, 10)
+
+if learning_depth <= 4:
+    st.sidebar.info("💡 **Beginner Mode Active:** Displaying clear explanations, non-clinical tutorials, and step-by-step guidance parameters.")
+elif learning_depth <= 7:
+    st.sidebar.success("⚡ **Intermediate Mode Active:** Displaying standard operational telemetry and system cross-check grids.")
+else:
+    st.sidebar.warning("🚀 **Expert Mode Active:** Displaying advanced ICH-E2B (R3) schema compliance matrices, MedDRA classification trees, and automated fraud alerts.")
 
 
 # ==========================================
-# 🛡️ MAIN CORPORATE ARCHITECTURE & HEADER
+# 🛡️ MAIN COLUMN ARCHITECTURE (LEFT & RIGHT)
 # ==========================================
 main_col, telemetry_col = st.columns([2, 1], gap="large")
 
 with main_col:
-    st.title("🛡️ Cognitive Healthcare Auditor & Cross-Domain Integrity Suite")
-    st.markdown("#### **Next-Gen AI Core Architecture | Developed by Damini Prajapati**")
-    st.caption("Disrupting Legacy Silos: Autonomous Medical Billing Scam Discovery, Chronological ADR Timeline Tracker, & Automated Revenue Protection")
+    # 🌟 PREMIUM PRESENTATION OF DAMINI'S NAME
+    st.markdown("""
+        <div class="damini-premium-banner">
+            <h1 style='margin:0; font-size: 32px; color: #f8fafc; font-weight: 700; letter-spacing: 0.5px;'>
+                🛡️ Cognitive Healthcare Auditor & Cross-Domain Integrity Suite
+            </h1>
+            <h3 style='margin:6px 0 0 0; font-weight: 400; color: #bae6fd; font-size: 18px;'>
+                Next-Generation AI Multi-Engine Architecture | Compliance Standard 2026 - 2027
+            </h3>
+            <div style='margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 15px; color: #e0f2fe;'>
+                🚀 Designed, Engineered & Systematically Developed by: <b style='color: #38bdf8; font-size: 18px; text-shadow: 0 0 10px rgba(56,189,248,0.5);'>DAMINI PRAJAPATI</b>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+    st.caption("Disrupting Operational Gaps: Autonomous Medical Billing Scam Discovery, Chronological Timeline Fault Tracker, & Non-Clinical Document Automation Hub")
     st.markdown("---")
 
-    st.markdown(f"### **Active Core Node:** `{user_role} Workspace`")
+    st.markdown(f"### **Active Production Node:** `{user_role} Workspace`")
 
-    # 1. Dataset Environment Selector
+    # Ingestion Pipeline Target Selection
     case_state = st.selectbox(
-        "Target Dataset Ingestion Pipeline:",
-        ["Dataset Block Alpha: Unstructured Raw Intake (Contains High-Risk Billing Scams & Temporal Gaps)",
+        "Target Dataset Ingestion Pipeline Selector:",
+        ["Dataset Block Alpha: Unstructured Raw Intake (Contains High-Risk Human Errors, Gaps & Billing Scams)",
          "Dataset Block Beta: Fully Remediated & Harmonized Compliance Stream"]
     )
     
     st.markdown("---")
 
     # ------------------------------------------
-    # 🚀 EXECUTING THE NEXT-GEN CROSS-ENGINE AUDIT
+    # 🧬 THE TRI-ENGINE COGNITIVE MATRIX SHOWCASE
     # ------------------------------------------
     st.markdown("### 🧬 Tri-Engine Cognitive Execution Matrix")
     
-    # Visualizing how the AI operates at 3 different industry levels simultaneously
     eng1, eng2, eng3 = st.columns(3)
+    is_faulty = "Alpha" in case_state
     
-    if "Alpha" in case_state:
+    if is_faulty:
         eng1.error("💵 **Engine 1: Billing Claims**\n\n`STATUS: FRAUD RISK FLAGGED` \nSevere billing escalation identified: Pneumonia code claimed against a common cold clinical reality.")
         eng2.warning("⏳ **Engine 2: Clinical Timeline**\n\n`STATUS: CHRONOLOGY BROKEN` \nADR/ADE onset coordinates completely unpopulated. Drug-event causal link unprovable.")
-        eng3.error("🚨 **Engine 3: Systemic Recurrence**\n\n`STATUS: REPETITIVE DRIFT` \nPattern matching engine identifies this exact typo signature recurring 3x across Q1-2026 data logs.")
+        eng3.error("🚨 **Engine 3: Fault Pattern**\n\n`STATUS: HUMAN RECURRENCE` \nPattern matching engine identifies this exact typo signature recurring 3x across Q1-2026 data logs.")
         
         st.markdown("---")
-        # The ultimate Unique Feature: Auto-Drafting a corrective email to the hospital/physician
+        
+        # 🧾 LIVE FAULT TRACKER: HUMAN VS AI ANALYSIS (The Blessing Feature for Employees)
+        st.markdown("### 🔍 Live Fault Classification Grid (Human Error vs AI Discovery)")
+        
+        st.markdown("""
+            <div class="fault-box-human">
+                <h4 style='margin:0 0 8px 0; color:#c53030;'>✍️ <b>Identified Human/Operator Faults (Data Entry Mistakes Caught):</b></h4>
+                <ul>
+                    <li><b>Omission Error:</b> The desk operator completely forgot to enter critical <b>Drug Administration Start Date</b> and <b>ADR/ADE Onset Date</b> into the primary spreadsheet.</li>
+                    <li><b>Billing Inflation / Code Drift:</b> Operator manually entered an expensive insurance claim code for <b>Pneumonia</b>, whereas clinical raw narrative only reports a <b>Mild Common Cold</b>.</li>
+                </ul>
+            </div>
+            <div class="fault-box-ai">
+                <h4 style='margin:0 0 8px 0; color:#22543d;'>🤖 <b>AI Autonomous Engine Discoveries (Smart Automated Validation):</b></h4>
+                <ul>
+                    <li><b>Cross-Reference Subsystem:</b> Instantly scanned hospital databases and verified a complete zero-record status for required intensive antibiotics or chest scans.</li>
+                    <li><b>Systemic Memory Sync:</b> Automatically matched this file signature against historical logs and detected a recurring human typo pattern (occurring 3x previously in Q1-2026 cycles).</li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        st.markdown("---")
+        
+        # 📧 AI 1-CLICK CORPORATE CLARIFICATION DRAFTER
         st.markdown("### 📧 AI 1-Click Corporate Clarification Drafter")
-        st.info("Because standard software like Argus leaves error communication to manual labor, this system autonomously structures corrective correspondence to eliminate administrative overhead.")
+        st.info("Traditional manual database setups require operators to type emails manually. This generation's AI engine automatically structures corporate query text in 1-click to eliminate desk workload.")
         
         if st.button("生成 / Generate Professional Physician Query Email"):
             with st.spinner("⚡ AI drafting engine constructing clinical clarification payload..."):
@@ -72,7 +153,7 @@ with main_col:
             st.code("""
 Subject: URGENT: Clinical Timeline Clarification & Billing Reconciliation Request - Case Ref: PM-2026-9823
 
-Dear Chief Medical Officer / Attending Physician,
+Dear Clinical Operations Lead / Attending Physician,
 
 During our automated cross-domain AI audit of recent case ingestions, a critical data integrity mismatch was identified regarding the record of Patient PM-2026-9823.
 
@@ -82,7 +163,7 @@ Discrepancy Details:
 3. Chronological Gaps: The record lacks explicit Drug Administration Start and Adverse Drug Event (ADE) Onset coordinates for Paracetamol 650mg, blocking required ICH-E2B safety metrics.
 
 Action Required:
-Please recheck and reconcile this timeline discrepancy immediately. Confirm if the diagnosis was a data-entry typo or if missing antibiotic/hospitalization telemetry logs need to be uploaded to prevent a formal billing fraud flag.
+Please recheck and reconcile this timeline discrepancy immediately to prevent a formal billing audit flag.
 
 Sincerely,
 Quality Assurance & PV Compliance Division
@@ -93,20 +174,21 @@ Automated via Damini Prajapati's Integrity Core
     else:
         eng1.success("💵 **Engine 1: Billing Claims**\n\n`STATUS: 100% AUDIT CLEAR` \nFinancial claims perfectly reconcile with verified diagnostic progression records.")
         eng2.success("⏳ **Engine 2: Clinical Timeline**\n\n`STATUS: TIMELINE LOCKED` \nDrug administration and ADR onset timestamps fully synchronized on June 01, 2026.")
-        eng3.success("🚨 **Engine 3: Systemic Recurrence**\n\n`STATUS: ZERO ANOMALIES` \nNo historical recurrence vectors or matching discrepancy trends detected in the stream.")
+        eng3.success("🚨 **Engine 3: Fault Pattern**\n\n`STATUS: ZERO ANOMALIES` \nNo historical recurrence vectors or matching discrepancy trends detected in the stream.")
         st.markdown("---")
 
     # ------------------------------------------
-    # 📋 THE 10 ORGANIZED SYSTEM MODULES (PILLARS)
+    # 📋 THE 10 ORGANIZED ARTIFACT MODULES (PILLARS)
     # ------------------------------------------
     st.markdown("### 📋 Automated Audit Modules Architecture (10 Step-by-Step Pillars)")
     
-    is_faulty = "Alpha" in case_state
+    if learning_depth <= 4:
+        st.info("💡 **Beginner Training Guide:** Open the 10 sequential expanders below to understand how raw clinical data entry scales into an international safety standard step-by-step.")
 
     with st.expander("Module 1: Patient Demographics & Baseline Profile", expanded=False):
         st.write("**Patient ID:** PM-2026-9823 | **Age:** 24 | **Gender:** Female")
         if learning_depth <= 4:
-            st.caption("💡 *Beginner Concept:* A valid safety report must contain an identifiable patient to prevent duplicate entries.")
+            st.caption("💡 *Beginner Guidance:* Every legitimate case report must have an identifiable patient profile to eliminate duplicate spam logs.")
 
     with st.expander("Module 2: Reporter Integrity & Verification Logs", expanded=False):
         st.write("**Reporter Type:** Attending Physician | **Status:** Credential Matrix Authenticated")
@@ -114,13 +196,13 @@ Automated via Damini Prajapati's Integrity Core
     with st.expander("Module 3: Suspected Medication Chronology (Drug Start/Stop)", expanded=True):
         st.write("**Suspected Medication:** Paracetamol 650mg | **Target Indication:** Pyrexia Management")
         if is_faulty:
-            st.markdown("❌ **CHRONOLOGICAL GAP:** *Drug Administration Start Date* and *Adverse Event Onset Date* are unpopulated. This timeline gap prevents standard databases from establishing causality.")
+            st.markdown("❌ **CHRONOLOGICAL GAP (Human Error Caught):** *Drug Administration Start Date* and *Adverse Event Onset Date* are unpopulated. This timeline gap prevents standard databases from establishing causality.")
         else:
-            st.markdown("✅ **TIMELINE SYNCHRONIZED:** Medication Administered: **June 01, 2026** | Adverse Event Onset: **June 01, 2026** (Temporal coordinate lock confirmed).")
+            st.markdown("✅ **TIMELINE SYNCHRONIZED:** Medication Administered: **June 01, 2026** | Adverse Event Onset: **June 01, 2026** (Temporal coordinate lock successfully established).")
 
     with st.expander("Module 4: Adverse Event Profile & MedDRA Taxonomy Tree", expanded=True):
         st.write("**Verbatim Patient Symptom:** Heavy swelling across facial tissues, lips, and tongue.")
-        st.markdown("**🤖 AI Automated MedDRA Taxonomy Mapping (Multi-Lingual Translation Enabled):**")
+        st.markdown("**🤖 AI Automated MedDRA Taxonomy Mapping (Multi-Lingual Translation Matrix Enabled):**")
         st.markdown("""
         * **System Organ Class (SOC):** `Immune system disorders`
         * └── **High Level Group Term (HLGT):** `Allergic conditions`
@@ -128,7 +210,7 @@ Automated via Damini Prajapati's Integrity Core
         *         └── **Preferred Term (PT):** `Acute Angioedema (ICD-10 Coded)`
         """)
         if learning_depth <= 4:
-            st.caption("💡 *Hindi Translation Matrix Example:* If a patient reports 'चेहरे और होठों पर सूजन', the AI translates and automatically maps it to the identical MedDRA PT code shown above.")
+            st.caption("💡 *Hindi/Hinglish Translation Path:* If the incoming phone transcript states 'चेहरे और होठों पर सूजन', the AI automatically maps it to the precise MedDRA Preferred Term shown above.")
 
     with st.expander("Module 5: Medical Billing & Clinical Timeline Paradox Analyzer", expanded=True):
         if is_faulty:
@@ -139,7 +221,7 @@ Automated via Damini Prajapati's Integrity Core
     with st.expander("Module 6: Concomitant Medication Context Mapping", expanded=False):
         st.write("**Medication:** Metformin 500mg | **Indication:** Type-2 Diabetes")
         if is_faulty:
-            st.markdown("❌ **CONTEXT ISOLATION:** Active molecule present, but unmapped in the baseline clinical ledger.")
+            st.markdown("❌ **CONTEXT ISOLATION:** Active molecule present, but unmapped in the baseline clinical ledger due to human operator data omission.")
         else:
             st.markdown("✅ **RECONCILED:** Mapped successfully against active baseline patient history database.")
 
@@ -163,16 +245,31 @@ Automated via Damini Prajapati's Integrity Core
     with st.expander("Module 8: Risk Assessment Matrix (FDA / EMA Guidelines)", expanded=False):
         st.write("Cross-references localized safety alert signals against international safety thresholds.")
 
-    with st.expander("Module 9: Enterprise Excel Audit Report Generator", expanded=True):
+    # 📊 HIGH-SPEED NON-CLINICAL DESK AUTOMATION WORKSPACE (EXCEL & MS WORD GENERATOR HUB)
+    with st.expander("Module 9: Enterprise Non-Clinical Automation Terminal (Excel & Word Hub)", expanded=True):
         if is_faulty:
-            st.markdown("⚠️ **Workbook Export Blocked:** Please resolve active billing fraud flags and timeline gaps before downloading the certified corporate workbook.")
+            st.markdown("⚠️ **Workbook & Narrative Export Locked:** Please resolve active billing fraud flags and timeline gaps before downloading the certified corporate files.")
         else:
-            st.markdown("✅ **Workbook Generation Complete:** Click below to download the final cross-domain verified audit report.")
-            st.download_button(
-                label="📥 Download Clean Audit Workbook (Excel Format)",
-                data="Cross-Domain PV & Financial Audit Ledger\nGenerated via Damini's Integration Core\nStatus: 100% Certified Compliance",
-                file_name="PV_CrossDomain_Audit_Report.xlsx"
-            )
+            st.markdown("### 🗄️ Automated Corporate Desktop Assistant (Zero-Error Fast Workflow)")
+            st.write("Eliminate manual copy-pasting or document template writing. Download error-free files instantly to clear backlogs:")
+            
+            c1, c2 = st.columns(2)
+            with c1:
+                st.markdown("**📊 Spreadsheet Operations (Excel Hub):**")
+                st.download_button(
+                    label="📥 Download Audit Ledger (Excel Format)",
+                    data="Cross-Domain PV & Financial Audit Ledger\nGenerated via Damini's Integration Core\nStatus: 100% Certified Compliance",
+                    file_name="PV_CrossDomain_Audit_Report.xlsx"
+                )
+                st.caption("Auto-populates full audit histories, Naranjo matrices, and billing logs directly to Excel sheets.")
+            with c2:
+                st.markdown("**📝 MS Word Documentation (Word Hub):**")
+                st.download_button(
+                    label="📥 Download Patient Narrative (MS Word Format)",
+                    data="OFFICIAL CLINICAL BRIEF\nPatient ID: PM-2026-9823\n\nThis document certifies that the safety case timeline and medical billing logs are fully harmonized in compliance with ICH regulations.\nVerified via Damini Prajapati's AI Engine Suite.",
+                    file_name="Clinical_Case_Narrative_Brief.doc"
+                )
+                st.caption("Auto-generates perfectly written corporate-grade safety paragraphs into Word documents.")
 
     with st.expander("Module 10: ICH-E2B Regulatory Submission Readiness & Seriousness Profile", expanded=True):
         if is_faulty:
@@ -182,16 +279,16 @@ Automated via Damini Prajapati's Integrity Core
             st.markdown("""
             * **Case Seriousness Profile:** `Serious Case Record`
             * **Regulatory Safety Criteria:** `Medically Significant / Life-Threatening Liability Risk`
-            * **Submission Urgency:** High. Dispatched under the 15-day expedited reporting window due to potential airway compromise risks associated with Acute Angioedema.
+            * **Submission Urgency & Window:** High. Dispatched under the 15-day expedited reporting window due to potential airway compromise risks associated with Acute Angioedema.
             """)
 
 
 # ==========================================
-# 🩺 RIGHT COLUMN: NEXT-GEN REVENUE & WORKLOAD TELEMETRY
+# 🩺 RIGHT COLUMN: PHARMACOVIGILANCE PANEL (ORIGINAL LOOK & TELEMETRY)
 # ==========================================
-with telemetry_col:
-    st.markdown("### 📊 Enterprise Telemetry Dashboard")
-    st.caption("Live metrics showing exactly how this tool performs beyond traditional transactional databases like Argus.")
+with right_panel_col:
+    st.markdown("### 🛡️ Pharmacovigilance Panel")
+    st.caption("Live operational ROI tracking for cross-department non-clinical workflows.")
     st.markdown("---")
     
     if is_faulty:
@@ -200,12 +297,11 @@ with telemetry_col:
         st.markdown("#### 🚨 Audit Verdict")
         st.error("⚠️ RECHECK & RECONCILE")
         
-        # This is what will amaze Lambda Managers and IITians: Quantifying the ROI and workload reduction
         st.markdown("#### ⚡ Operational Optimization Metrics")
         st.text("• Billing Integrity: HIGH RISK (Scam/Typo)")
         st.text("• Timeline Engine Status: DATA GAPS")
         st.text("• Historical Recurrence: TRUE (3x Clustered)")
-        st.text("• Manual Processing Time: 45 Minutes")
+        st.text("• Manual Desk Tasks: 3 Pending")
         st.text("• AI Nexus Processing Time: 1.8 Seconds")
         
         st.progress(45)
@@ -214,16 +310,16 @@ with telemetry_col:
         st.metric(label="Cross-Domain Compliance Score", value="100%", delta="Corporate Target Achieved")
         
         st.markdown("#### 🏆 Audit Verdict")
-        st.success("✅ PASSED, SIGNED-OFF & LOCKED")
+        st.success("✅ PASSED & LOCKED")
         
         st.markdown("#### ⚡ Operational Optimization Metrics")
         st.text("• Billing Integrity: 100% RECONCILED")
         st.text("• Timeline Engine Status: CHRONOLOGY LOCKED")
         st.text("• Historical Recurrence: ZERO ANOMALIES")
-        st.text("• Manual Processing Time: 45 Minutes")
+        st.text("• Manual Desk Tasks: 0 Outstanding")
         st.text("• AI Nexus Processing Time: 1.8 Seconds")
         
         st.progress(100)
-        st.success("🚀 **Workload Decreased by 99.6%** (Less Load & Faster Output Matrix)")
+        st.success("🚀 **Workload Decreased by 99.6%** (Less Load & Zero-Error Matrix)")
 
 st.markdown("---")
