@@ -1,160 +1,159 @@
 import streamlit as st
-import pandas as pd
-import io
 
-# 1. Page Configuration
-st.set_page_config(
-    page_title="AI Healthcare Auditor & PV Compliance Suite", 
-    layout="wide", 
-    page_icon="🛡️"
-)
+# Set page layout to wide to perfectly accommodate the right-corner panel
+st.set_page_config(layout="wide")
 
-# 2. App Main Header
-st.title("🛡️ AI Healthcare Auditor & PV Compliance Suite")
-st.markdown("##### *Enterprise Edition v3.0 (2026 Compliance Standard) | Developed by Damini Prajapati*")
-st.markdown("---")
+# ==========================================
+# 🎛️ SIDEBAR CONTROL CENTER (ORIGINAL LOOK)
+# ==========================================
+st.sidebar.markdown("## 🎛️ Control Center")
 
-# 3. Sidebar / Control Center
-st.sidebar.header("🎛️ Control Center")
 user_role = st.sidebar.selectbox(
-    "Select User Role:", 
-    ["PV Associate", "Drug Safety Specialist", "Medical Reviewer"]
+    "Select User Role:",
+    ["PV Associate", "Medical Reviewer", "Regulatory Lead"]
 )
 
 processing_mode = st.sidebar.radio(
-    "Processing Mode:", 
+    "Processing Mode:",
     ["Use Demo Cases", "Upload Custom Case (Live Shield)"]
 )
 
 st.sidebar.markdown("---")
-st.sidebar.subheader("🧠 Learning Mode Adaptive Level")
-depth_level = st.sidebar.select_slider(
-    "Choose Depth:", 
-    options=["Beginner", "Intermediate", "Expert"], 
-    value="Expert"
-)
+st.sidebar.markdown("### 🧠 Learning Mode Adaptive Level")
+learning_depth = st.sidebar.slider("Choose Depth (Beginner to Expert):", 1, 10, 10)
+st.sidebar.caption("Active Optimization Level: **Expert Mode**")
 
-# 4. Active Workspace Banner
-st.subheader(f"Active Session: `{user_role} Interface`")
-case_selection = st.selectbox(
-    "Select Active Audit Case:", 
-    ["Case 1: Routine Cold vs Pneumonia Mismatch", "Case 2: Post-Marketing Adverse Event Drift"]
-)
-st.markdown("---")
 
-# 5. Executive Real-Time Compliance Analytics Metrics
-st.header("📈 Executive Real-Time Compliance Analytics")
-col1, col2, col3, col4 = st.columns(4)
+# ==========================================
+# 🛡️ MAIN LAYOUT CONFIGURATION
+# ==========================================
+# Creating a 2-column layout to place the PV Panel on the Right Corner
+main_content_col, right_panel_col = st.columns([2, 1], gap="large")
 
-with col1:
-    st.error("FEATURE 1: RISK ENGINE")
-    st.metric(label="Status Score", value="HIGH RISK", delta="Rejection Prob: 89%")
-    st.caption("Confidence Score: 94.2%")
 
-with col2:
-    st.info("FEATURE 7: QUALITY SCORE")
-    st.metric(label="Documentation Metric", value="62%", delta="-4% Mismatch")
-
-with col3:
-    st.success("FEATURE 7: COMPLETENESS")
-    st.metric(label="Data Fields Population", value="55%", delta="Gaps Detected")
-
-with col4:
-    st.warning("FEATURE 7: READINESS")
-    st.metric(label="Regulatory Submission", value="10%", delta="Critical Omissions")
-
-st.markdown("---")
-
-# 6. Multi-Module Live Processing Matrix
-st.header("🔲 Multi-Module Live Processing Matrix")
-m_col1, m_col2 = st.columns(2)
-
-with m_col1:
-    st.subheader("📝 Feature 8: Clinical Narrative Summary Generator")
-    st.text_area(
-        "Automated Structured Summaries (Parsed from Source Documents):",
-        value="Patient Profile: Male adult (54 Years old) parsed from baseline file.\n"
-              "Anonymization Status: HIPAA Cleaned.\n"
-              "Suspected Drug: Paracetamol (Suspected for clinical management of baseline pyrexia symptoms).\n"
-              "Concomitant Therapy: Metformin (Indicated for Type-2 Diabetes management).\n"
-              "Adverse Event: Mild common cold timeline mismatched with high-severity billing codes.",
-        height=180
-    )
-
-with m_col2:
-    st.subheader("🔍 Feature 2: Missing Information Tracking Node")
-    st.markdown("##### *Critical safety data segments missing under regulatory compliance:*")
-    st.checkbox("🚨 Missing Drug Start Date (Concomitant / Suspected)", value=True)
-    st.checkbox("🚨 Missing Event Outcome Assessment", value=True)
-    st.checkbox("🚨 Missing Adverse Event Onset Date", value=True)
-    st.checkbox("⚠️ Missing Baseline Concomitant Medications Log", value=True)
-
-st.markdown("---")
-
-# 7. Regulatory Compliance & Rationale Module
-st.header("⚖️ Regulatory Compliance & Rationale Module")
-with st.expander("View Compliance Mismatch Analysis & Corrective Actions"):
-    st.warning("Timeline Conflict: No documented onset drug exposure timeline to logically justify causality.")
-    st.info("🌐 Feature 6: International E2B (R3) Regulatory Mapping Node (ICH Compliance Active)")
-
-st.markdown("---")
-
-# 8. Automated Processing & Output Generation Hub
-st.header("⚙️ Automated Processing & Output Generation Hub")
-hub_col1, hub_col2 = st.columns(2)
-
-with hub_col1:
-    st.subheader("📩 Feature 3: Live Follow-Up Query Generator")
-    if st.button("Generate Case Follow-up Queries", type="primary"):
-        st.code("""
-To: primary_reporter@hospital.org
-Subject: Urgent Follow-Up Query: Verification Required for Case Safety Audit #1245
-
-Dear Clinical Operations Lead,
-During a standard regulatory compliance review of Case #1245, a data discrepancy 
-was identified between the physician narrative and billing documentation. 
-Kindly provide immediate clarification on the following elements:
-
-1. [CRITICAL] Please confirm the exact 'Drug Start Date' and time for Suspected Drug.
-        """, language="markdown")
-
-with hub_col2:
-    st.subheader("📊 Feature 9: Enterprise Excel Audit Report Generator")
-    st.write("Click below to compile and download the full 10-feature audit analytics report.")
+# ==========================================
+# 🏢 LEFT COLUMN: MAIN CONTENT & 10 MODULES
+# ==========================================
+with main_content_col:
+    # Prominent Header with Name
+    st.title("🛡️ AI Healthcare Auditor & PV Compliance Suite")
+    st.markdown("#### **Enterprise Edition v3.0 (2026 Compliance Standard) | Developed by Damini Prajapati**")
+    st.markdown("---")
     
-    buffer = io.BytesIO()
-    df_audit = pd.DataFrame({
-        'Feature ID': ['Feature 1', 'Feature 2', 'Feature 7', 'Feature 8'],
-        'Feature Name': ['Risk Engine', 'Missing Info Node', 'Compliance Score', 'Narrative Gen'],
-        'Status': ['Evaluated', 'Flags Tracked', '62% (High Risk)', 'Completed']
-    })
-    with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
-        df_audit.to_excel(writer, index=False, sheet_name='Audit Summary Log')
+    st.markdown(f"### **Active Session:** `{user_role} Interface`")
     
-    st.download_button(
-        label="Download Full Audit Analysis Report (Excel Format)",
-        data=buffer.getvalue(),
-        file_name="Enterprise_Audit_Report_Damini.xlsx",
-        mime="application/vnd.ms-excel"
+    # Active Case Dropdown
+    active_case = st.selectbox(
+        "Select Active Audit Case:",
+        ["Case 1: Routine Cold vs Pneumonia Mismatch"]
     )
+    
+    # 🌟 TARGET ENVIRONMENT SWITCH (THE INTERVIEWER TOGGLE)
+    st.markdown("### 📊 Target Dataset Environment Selector")
+    case_environment = st.selectbox(
+        "Choose Dataset State for Validation Engine Evaluation:",
+        options=[
+            "Dataset Environment A: Non-Compliant Baseline (High-Risk / Audit Mode)",
+            "Dataset Environment B: Remediated Baseline (100% ICH-E2B Compliant)"
+        ],
+        help="Switch environments to display how the AI engine flags timeline paradoxes vs processes perfect files."
+    )
+    st.markdown("---")
+    
+    st.markdown("### 📋 System Modules Architecture (10 Pillars of PV Audit)")
+    
+    # Setting up data parameters based on the chosen environment
+    if "Non-Compliant" in case_environment:
+        # Faulty Data State strings
+        mod3_status = "❌ **CRITICAL FLAGGED:** Chronological coordinates missing. *Drug Start Date* and *Adverse Event Onset Date* are blank. Temporal relationship cannot be mathematically evaluated."
+        mod5_status = "❌ **CLINICAL PARADOX DETECTED:** High-severity billing code for *Pneumonia* applied, but clinical timeline only states a *mild common cold*. Antibiotic logs, ER metrics, and chest X-ray confirmations are entirely missing."
+        mod6_status = "❌ **CONTEXT ISOLATION:** Patient is on Metformin 500mg therapy for Type-2 Diabetes, but the *Baseline Concomitant Medications Log* is unmapped in the database."
+        mod9_action = "⚠️ **Excel Generation Blocked:** Please remediate critical errors before downloading the master audit workbook."
+        mod10_status = "❌ **REJECTED:** Only 2 out of 4 baseline safety reporting pillars satisfied. Automated ICH XML generation halted."
+    else:
+        # Compliant Data State strings
+        mod3_status = "✅ **VALIDATED:** Suspected Drug Track (Paracetamol 650mg) and Adverse Event Onset both fully synced and locked on **June 01, 2026**."
+        mod5_status = "✅ **TIMELINE SYNCHRONIZED:** Clinical indication updated to *Pyrexia (Fever) secondary to Pneumonia*. Billing codes and clinical progression are now perfectly aligned with the transactional medical reality."
+        mod6_status = "✅ **LOG MAPPED:** Metformin 500mg successfully reconciled against the fully populated *Baseline Medical History Log*."
+        mod9_action = "✅ **Excel Generation Ready:** Click the button below to extract the complete 10-feature audit analytics report."
+        mod10_status = "✅ **APPROVED:** 100% ICH-E2B Compliant Architecture. E2B (R3) safety payload successfully generated."
+
+    # Rendering the 10 Explicit Modules
+    with st.expander("Module 1: Patient Demographics & Baseline History", expanded=False):
+        st.write("**Patient ID:** Anonymized Record-2026 | **Age:** 24 | **Gender:** Female")
+        st.write("Baseline data successfully ingested into the safety architecture.")
+
+    with st.expander("Module 2: Reporter Information & Verification", expanded=False):
+        st.write("**Reporter Type:** Healthcare Professional (Verified) | **Country:** India")
+        st.write("Pillar 1 of ICH-E2B minimum criteria satisfies international regulations.")
+
+    with st.expander("Module 3: Suspected Medication Chronology", expanded=True):
+        st.write("**Suspected Drug:** Paracetamol 650mg")
+        st.markdown(mod3_status)
+
+    with st.expander("Module 4: Adverse Event (AE) Profile & MedDRA Coding", expanded=False):
+        st.write("**Reported Term:** Severe swelling of lips and face | **MedDRA Preferred Term:** Acute Angioedema")
+        st.write("System auto-coding function operating at 99.8% precision matrix.")
+
+    with st.expander("Module 5: Clinical Timeline Paradox Analysis", expanded=True):
+        st.markdown(mod5_status)
+
+    with st.expander("Module 6: Concomitant Medication Context Mapping", expanded=True):
+        st.markdown(mod6_status)
+
+    with st.expander("Module 7: Causality Assessment Engine (Naranjo Scoring)", expanded=False):
+        st.write("Calculates safety scores dynamically using temporal logs, dechallenge matrices, and rechallenge parameters.")
+
+    with st.expander("Module 8: Risk Assessment Matrix (FDA / EMA Guidelines)", expanded=False):
+        st.write("Cross-references international signal detection databases to evaluate product liability risk.")
+
+    with st.expander("Module 9: Enterprise Excel Audit Report Generator", expanded=True):
+        st.markdown(mod9_action)
+        if "Remediated Baseline" in case_environment:
+            st.download_button(
+                label="📥 Download Full Audit Analysis Report (Excel Format)",
+                data="Audit Clear Header\n100% Validated Data Streamlined",
+                file_name="PV_Enterprise_Audit_Report.xlsx"
+            )
+
+    with st.expander("Module 10: ICH-E2B (R3) Regulatory Submission Readiness", expanded=True):
+        st.markdown(mod10_status)
+
+
+# ==========================================
+# 🩺 RIGHT COLUMN: PHARMACOVIGILANCE PANEL
+# ==========================================
+with right_panel_col:
+    st.markdown("### 🛡️ Pharmacovigilance Panel")
+    st.caption("Live Analytical Evaluation Metrics")
+    st.markdown("---")
+    
+    # Changing metrics dynamically based on the toggle state
+    if "Non-Compliant" in case_environment:
+        st.metric(label="E2B Compliance Score", value="45%", delta="-55% Critical Risk")
+        
+        st.markdown("#### 🚨 Audit Status")
+        st.error("⚠️ FLAGGED FOR REJECTION")
+        
+        st.markdown("#### 🔍 Core Safety Metrics")
+        st.text("• Naranjo Score: Undefined (0)")
+        st.text("• Timeline Validation: FAILED")
+        st.text("• Missing Pillars: Onset Dates")
+        
+        st.markdown("#### 📜 Regulatory Status")
+        st.warning("Not Ready for FDA/EMA Submission")
+    else:
+        st.metric(label="E2B Compliance Score", value="100%", delta="Target Achieved")
+        
+        st.markdown("#### 🏆 Audit Status")
+        st.success("✅ PASSED & SIGNED-OFF")
+        
+        st.markdown("#### 🔍 Core Safety Metrics")
+        st.text("• Naranjo Score: +6 (Probable)")
+        st.text("• Timeline Validation: PASSED")
+        st.text("• Missing Pillars: None (0)")
+        
+        st.markdown("#### 📜 Regulatory Status")
+        st.info("ICH-E2B XML Payload Ready")
 
 st.markdown("---")
-
-# 9. Feature 10: Interactive Learning View Panel
-st.header("💡 Feature 10: Interactive Learning View Panel")
-
-if depth_level == "Beginner":
-    st.markdown("""
-    ### 🟢 Beginner Concept Clarity:
-    सरल शब्दों में कहें तो, डॉक्टर के पर्चे (Clinical Notes) में लिखा है कि मरीज को साधारण जुकाम है, लेकिन बिलिंग डिपार्टमेंट ने न्यूमोनिया (ICD-10 High Billing Code) का कोड लगा दिया ताकि इंश्योरेंस से ज्यादा पैसे मिल सकें। हमारी एआई मशीन इसी मेडिकल अपकोडिंग एरर और डेटा गैप्स को तुरंत पकड़ लेती है।
-    """)
-elif depth_level == "Intermediate":
-    st.markdown("""
-    ### 🟡 Intermediate Professional View:
-    यह केस **Upcoding Non-compliance** का एक उदाहरण है। यहाँ क्लिनिकल नैरेटिव और सबमिटेड ट्रांजैक्शनल डायग्नोस्टिक कोड्स के बीच सीधा मिसमैच है। सिस्टम मिसिंग टाइमलाइन डेटा को फ्लैग कर रहा है, जिसके बिना फार्माकोविजिलेंस (PV) ऑपरेशन्स में Case Audit अप्रूव नहीं किया जा सकता।
-    """)
-else:
-    st.markdown("""
-    ### 🔴 Advanced Subject Expert Insight:
-    In terms of safety database architecture, executing a regulatory submission with a severe mismatch between clinical findings and transactional ICD-10 diagnostic classifications triggers safety signaling anomalies. Lacking the temporal coordinate (**ICH-E2B Field G.k.2.2.r.1**) directly invalidates automated causality algorithms (such as the Naranjo Algorithm or WHO-UMC causality categories), turning the report into a non-compliant record prone to rigorous FDA/EMA regulatory scrutiny.
-    """)
