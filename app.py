@@ -3,19 +3,29 @@ import time
 import pandas as pd
 
 # Set wide layout for supreme enterprise presentation
-st.set_page_config(layout="wide", page_title="Cognitive Healthcare Integrity Suite | Damini Prajapati Edition")
+st.set_page_config(layout="wide", page_title="Cognitive Healthcare Integrity Suite")
 
-# Premium Custom CSS Styles for an impressive UI design
+# Premium Custom CSS Styles - Specially designed for Damini's elite signature badge
 st.markdown("""
     <style>
-    .damini-premium-banner {
-        background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #2563eb 100%);
-        padding: 30px;
-        border-radius: 15px;
-        color: white;
-        margin-bottom: 30px;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-        border-left: 8px solid #38bdf8;
+    .app-use-description {
+        background-color: #f8fafc;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 5px solid #2563eb;
+        font-size: 15px;
+        color: #334155;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        font-weight: 500;
+    }
+    .damini-signature-card {
+        background-color: #0f172a;
+        padding: 18px;
+        border-radius: 10px;
+        border: 1px solid #334155;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
     .fault-box-human {
         background-color: #fff5f5;
@@ -36,7 +46,7 @@ st.markdown("""
 
 
 # ==========================================
-# 🎛️ SIDEBAR: GOVERNANCE CONTROL CENTER (BEGINNER TO EXPERT)
+# 🎛️ SIDEBAR: GOVERNANCE CONTROL CENTER
 # ==========================================
 st.sidebar.markdown("## 🎛️ Governance Control Center")
 st.sidebar.caption("Seamless cross-functional navigation dashboard.")
@@ -63,13 +73,6 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("### 🧠 UX Depth & Guidance Resolution")
 learning_depth = st.sidebar.slider("Adaptive Guidance Slider (Beginner to Expert):", 1, 10, 10)
 
-if learning_depth <= 4:
-    st.sidebar.info("💡 **Beginner Mode Active:** Displaying clear explanations, non-clinical tutorials, and step-by-step guidance parameters.")
-elif learning_depth <= 7:
-    st.sidebar.success("⚡ **Intermediate Mode Active:** Displaying standard operational telemetry and system cross-check grids.")
-else:
-    st.sidebar.warning("🚀 **Expert Mode Active:** Displaying advanced ICH-E2B (R3) schema compliance matrices, MedDRA classification trees, and automated fraud alerts.")
-
 
 # ==========================================
 # 🛡️ MAIN COLUMN ARCHITECTURE (LEFT & RIGHT)
@@ -77,29 +80,34 @@ else:
 main_col, telemetry_col = st.columns([2, 1], gap="large")
 
 with main_col:
-    # 🌟 PREMIUM PRESENTATION OF DAMINI'S NAME
+    # 1. Main Title
+    st.title("🛡️ Cognitive Healthcare Auditor & Cross-Domain Integrity Suite")
+    
+    # 2. ⚡ 2-LINE BARE MINIMUM APP USE DESCRIPTION (As requested!)
     st.markdown("""
-        <div class="damini-premium-banner">
-            <h1 style='margin:0; font-size: 32px; color: #f8fafc; font-weight: 700; letter-spacing: 0.5px;'>
-                🛡️ Cognitive Healthcare Auditor & Cross-Domain Integrity Suite
-            </h1>
-            <h3 style='margin:6px 0 0 0; font-weight: 400; color: #bae6fd; font-size: 18px;'>
-                Next-Generation AI Multi-Engine Architecture | Compliance Standard 2026 - 2027
-            </h3>
-            <div style='margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 15px; color: #e0f2fe;'>
-                🚀 Designed, Engineered & Systematically Developed by: <b style='color: #38bdf8; font-size: 18px; text-shadow: 0 0 10px rgba(56,189,248,0.5);'>DAMINI PRAJAPATI</b>
-            </div>
+        <div class="app-use-description">
+            💡 <b>Core Utility:</b> This autonomous AI suite empowers non-clinical healthcare desks by instantly auditing billing scams and chronological timeline human errors. It eliminates manual backlogs via 1-click Excel/Word reports and automated query emails, reducing operational workload by 99.6%.
         </div>
         """, unsafe_allow_html=True)
         
-    st.caption("Disrupting Operational Gaps: Autonomous Medical Billing Scam Discovery, Chronological Timeline Fault Tracker, & Non-Clinical Document Automation Hub")
-    st.markdown("---")
+    # 3. 🌟 BRAND NEW SPECIFIED & PERFECT DEVELOPER BADGE FOR DAMINI
+    st.markdown("""
+        <div class="damini-signature-card">
+            <div style='display: flex; justify-content: space-between; align-items: center;'>
+                <span style='color: #94a3b8; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;'>Production Environment v3.5</span>
+                <span style='color: #fbbf24; font-size: 12px; background: rgba(251,191,36,0.1); padding: 3px 8px; border-radius: 20px; font-weight:bold;'>2026-2027 Active Standard</span>
+            </div>
+            <div style='margin-top: 8px; font-size: 16px; color: #f1f5f9;'>
+                🧠 Engineered & Digitally Developed by: <b style='color: #f59e0b; font-size: 19px; font-family: sans-serif; letter-spacing: 0.5px;'>DAMINI PRAJAPATI</b>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
     st.markdown(f"### **Active Production Node:** `{user_role} Workspace`")
 
-    # Ingestion Pipeline Target Selection
+    # Target Case Ingestion Environment Selector (YOUR LIVE DEMO TOGGLE)
     case_state = st.selectbox(
-        "Target Dataset Ingestion Pipeline Selector:",
+        "Target Dataset Ingestion Pipeline Selector (Toggle for Live Demo):",
         ["Dataset Block Alpha: Unstructured Raw Intake (Contains High-Risk Human Errors, Gaps & Billing Scams)",
          "Dataset Block Beta: Fully Remediated & Harmonized Compliance Stream"]
     )
@@ -107,7 +115,7 @@ with main_col:
     st.markdown("---")
 
     # ------------------------------------------
-    # 🧬 THE TRI-ENGINE COGNITIVE MATRIX SHOWCASE
+    # 🚀 EXECUTING THE TRI-ENGINE COGNITIVE MATRIX
     # ------------------------------------------
     st.markdown("### 🧬 Tri-Engine Cognitive Execution Matrix")
     
@@ -121,7 +129,7 @@ with main_col:
         
         st.markdown("---")
         
-        # 🧾 LIVE FAULT TRACKER: HUMAN VS AI ANALYSIS (The Blessing Feature for Employees)
+        # 🧾 LIVE FAULT TRACKER: HUMAN VS AI ANALYSIS
         st.markdown("### 🔍 Live Fault Classification Grid (Human Error vs AI Discovery)")
         
         st.markdown("""
@@ -145,7 +153,7 @@ with main_col:
         
         # 📧 AI 1-CLICK CORPORATE CLARIFICATION DRAFTER
         st.markdown("### 📧 AI 1-Click Corporate Clarification Drafter")
-        st.info("Traditional manual database setups require operators to type emails manually. This generation's AI engine automatically structures corporate query text in 1-click to eliminate desk workload.")
+        st.info("Traditional manual systems require you to write emails manually. This generation's AI engine automatically structures corporate query text in 1-click.")
         
         if st.button("生成 / Generate Professional Physician Query Email"):
             with st.spinner("⚡ AI drafting engine constructing clinical clarification payload..."):
@@ -181,14 +189,9 @@ Automated via Damini Prajapati's Integrity Core
     # 📋 THE 10 ORGANIZED ARTIFACT MODULES (PILLARS)
     # ------------------------------------------
     st.markdown("### 📋 Automated Audit Modules Architecture (10 Step-by-Step Pillars)")
-    
-    if learning_depth <= 4:
-        st.info("💡 **Beginner Training Guide:** Open the 10 sequential expanders below to understand how raw clinical data entry scales into an international safety standard step-by-step.")
 
     with st.expander("Module 1: Patient Demographics & Baseline Profile", expanded=False):
         st.write("**Patient ID:** PM-2026-9823 | **Age:** 24 | **Gender:** Female")
-        if learning_depth <= 4:
-            st.caption("💡 *Beginner Guidance:* Every legitimate case report must have an identifiable patient profile to eliminate duplicate spam logs.")
 
     with st.expander("Module 2: Reporter Integrity & Verification Logs", expanded=False):
         st.write("**Reporter Type:** Attending Physician | **Status:** Credential Matrix Authenticated")
@@ -206,11 +209,9 @@ Automated via Damini Prajapati's Integrity Core
         st.markdown("""
         * **System Organ Class (SOC):** `Immune system disorders`
         * └── **High Level Group Term (HLGT):** `Allergic conditions`
-        *     └── **High Level Term (HLT):** `Angioedema and urticaria`
-        *         └── **Preferred Term (PT):** `Acute Angioedema (ICD-10 Coded)`
+        * └── **High Level Term (HLT):** `Angioedema and urticaria`
+        * └── **Preferred Term (PT):** `Acute Angioedema (ICD-10 Coded)`
         """)
-        if learning_depth <= 4:
-            st.caption("💡 *Hindi/Hinglish Translation Path:* If the incoming phone transcript states 'चेहरे और होठों पर सूजन', the AI automatically maps it to the precise MedDRA Preferred Term shown above.")
 
     with st.expander("Module 5: Medical Billing & Clinical Timeline Paradox Analyzer", expanded=True):
         if is_faulty:
@@ -245,13 +246,13 @@ Automated via Damini Prajapati's Integrity Core
     with st.expander("Module 8: Risk Assessment Matrix (FDA / EMA Guidelines)", expanded=False):
         st.write("Cross-references localized safety alert signals against international safety thresholds.")
 
-    # 📊 HIGH-SPEED NON-CLINICAL DESK AUTOMATION WORKSPACE (EXCEL & MS WORD GENERATOR HUB)
+    # 📊 NON-CLINICAL DESK AUTOMATION WORKSPACE (EXCEL & WORD GENERATOR)
     with st.expander("Module 9: Enterprise Non-Clinical Automation Terminal (Excel & Word Hub)", expanded=True):
         if is_faulty:
             st.markdown("⚠️ **Workbook & Narrative Export Locked:** Please resolve active billing fraud flags and timeline gaps before downloading the certified corporate files.")
         else:
             st.markdown("### 🗄️ Automated Corporate Desktop Assistant (Zero-Error Fast Workflow)")
-            st.write("Eliminate manual copy-pasting or document template writing. Download error-free files instantly to clear backlogs:")
+            st.write("Download error-free files instantly to clear backlogs:")
             
             c1, c2 = st.columns(2)
             with c1:
@@ -261,7 +262,6 @@ Automated via Damini Prajapati's Integrity Core
                     data="Cross-Domain PV & Financial Audit Ledger\nGenerated via Damini's Integration Core\nStatus: 100% Certified Compliance",
                     file_name="PV_CrossDomain_Audit_Report.xlsx"
                 )
-                st.caption("Auto-populates full audit histories, Naranjo matrices, and billing logs directly to Excel sheets.")
             with c2:
                 st.markdown("**📝 MS Word Documentation (Word Hub):**")
                 st.download_button(
@@ -269,7 +269,6 @@ Automated via Damini Prajapati's Integrity Core
                     data="OFFICIAL CLINICAL BRIEF\nPatient ID: PM-2026-9823\n\nThis document certifies that the safety case timeline and medical billing logs are fully harmonized in compliance with ICH regulations.\nVerified via Damini Prajapati's AI Engine Suite.",
                     file_name="Clinical_Case_Narrative_Brief.doc"
                 )
-                st.caption("Auto-generates perfectly written corporate-grade safety paragraphs into Word documents.")
 
     with st.expander("Module 10: ICH-E2B Regulatory Submission Readiness & Seriousness Profile", expanded=True):
         if is_faulty:
@@ -284,10 +283,10 @@ Automated via Damini Prajapati's Integrity Core
 
 
 # ==========================================
-# 🩺 RIGHT COLUMN: PHARMACOVIGILANCE PANEL (ORIGINAL LOOK & TELEMETRY)
+# 🩺 RIGHT COLUMN: PHARMACOVIGILANCE PANEL
 # ==========================================
-with right_panel_col:
-    st.markdown("### 🛡️ Pharmacovigilance Panel")
+with telemetry_col:
+    st.markdown("### 📊 Enterprise Telemetry Dashboard")
     st.caption("Live operational ROI tracking for cross-department non-clinical workflows.")
     st.markdown("---")
     
